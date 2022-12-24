@@ -1,0 +1,41 @@
+@model SampleASPIdentity.Models.EditRoleViewModel
+@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<h1>Edit Role</h1>
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="mb-3 mt-3">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" disabled />
+    </div>
+    <div class="mb-3">
+        <label asp-for="RoleName"></label>
+        <input asp-for="RoleName" class="form-control" />
+        <span asp-validation-for="RoleName" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:auto;">
+        Update
+    </button>
+
+    <a asp-action="ListRoles" class="btn btn-primary" style="width:auto;">Back To List Roles</a>
+    <br/>
+    <hr/>
+    <h3>User pada role ini</h3>
+    <table class="table table-striped">
+        <tr>
+            <td>Username</td>
+        </tr>
+        @if(Model.Users.Any())
+        {
+            foreach(var user in Model.Users)
+            {
+                <td>@user</td>
+            }
+        }
+    </table>
+    <a href="#" class="btn btn-primary">Add Users</a>
+    <a href="#" class="btn btn-primary">Remove Users</a>
+</form>
