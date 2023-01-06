@@ -32,10 +32,12 @@
         {
             foreach(var user in Model.Users)
             {
-                <td>@user</td>
+                <tr>
+                     <td>@user</td>
+                </tr>
             }
         }
     </table>
-    <a href="#" class="btn btn-primary">Add Users</a>
-    <a href="#" class="btn btn-primary">Remove Users</a>
+    <a asp-controller="Admin" asp-action="EditUsersInRole"
+     asp-route-roleId="@Model.Id" class="btn btn-primary">Add Or Remove Users from Role</a>
 </form>
