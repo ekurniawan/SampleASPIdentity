@@ -11,6 +11,8 @@ using SampleASPIdentity.Models;
 
 namespace SampleASPIdentity.Controllers
 {
+    [Authorize(Roles ="Administrator")]
+    [Authorize(Roles ="Member")]
     public class AdminController : Controller
     {
         private readonly ILogger<AdminController> _logger;
@@ -181,7 +183,7 @@ namespace SampleASPIdentity.Controllers
             return RedirectToAction("EditRole",new {Id=roleId});
         }
 
-        [Authorize]
+       
         public IActionResult Index()
         {
             var username = _userManager.GetUserName(User);
